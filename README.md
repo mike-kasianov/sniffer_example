@@ -1,5 +1,7 @@
 # Sniffer Example
 
+This [article](https://dev.to/michael_kasianov/packet-sniffer-in-elixir-1hg) explains a bit more what's going on in the code.
+
 Simple sniffer written on Elixir using sockets.
 
 Requires OTP version 22+
