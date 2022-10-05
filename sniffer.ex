@@ -36,9 +36,8 @@ defmodule Sniffer do
 
   @impl GenServer
   def handle_cast({:socket_data, source, data}, socket) do
-    IO.inspect(source, label: "SOURCE")
-
     IO.puts("-------------------")
+    IO.inspect(source, label: "SOURCE")
 
     case parse_ethernet_frame(data) do
       {:ok, frame} ->
@@ -67,7 +66,7 @@ defmodule Sniffer do
 
   # Internal
 
-  def socket_open!() do
+  defp socket_open!() do
     # The protocol @eth_p_all must be provided in network byte order (big endian).
     # See https://man7.org/linux/man-pages/man7/packet.7.html for details
     <<eth_p_all_host::big-unsigned-integer-size(16)>> = <<@eth_p_all::native-unsigned-integer-size(16)>>
